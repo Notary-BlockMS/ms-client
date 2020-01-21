@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - '9'
+
+cache:
+  npm: true
+  directories:
+    - node_modules
+
+services:
+  - mongodb
+
+before_script:
+  - npm i -g npm
+
+script:
+  - npm test
+
+notification:
+  email: false
+  slack: true

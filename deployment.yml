@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cart-blockms-cliente-dep
+  labels:
+    #Project ID
+    app: cart-blockms
+spec:
+  #Run two instances of our application
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cart-blockms
+    spec:
+      #Container details
+      containers:
+        - name: cart-blockms-cliente
+          image: gcr.io/cart-blockms/cart-blockms-cliente:0.0.1
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"  
+
+          #Ports to expose
+          ports:
+          - containerPort: 3000
